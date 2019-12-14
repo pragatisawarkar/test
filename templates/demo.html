@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome To WT_Forms</title>
+    {{msg}}
+    {{emps}}
+</head>
+<body>
+        <form action="http://localhost:5000/emp/save/" method="post">
+            {{eform.empid.label}}{{eform.empid}}<br><br>
+            {{eform.empname.label}}{{eform.empname}}<br><br>
+            {{eform.empage.label}}{{eform.empage}}<br><br>
+            {{eform.emphobbies.label}}{{eform.emphobbies}}<br><br>
+            <input type="submit">
+        </form>
+</body>
+<table border="1">
+    <thead>
+        <td>EmpId</td>
+        <td>EmpName</td>
+        <td>EmpAge</td>
+        <td>Action</td>
+    </thead>
+    {% for emp in emps %}
+    <tbody>
+    <td>{{emp.empid}}</td>
+    <td>{{emp.empname}}</td>
+    <td>{{emp.empage}}</td>
+    <td>
+        <a href="/emp/edit/{{emp.empid}}">EDIT</a>
+        <a href="/emp/delete/{{emp.empid}}">DELETE</a>
+
+    </td>
+    </tbody>
+    {% endfor %}
+
+</table>
+</html>
